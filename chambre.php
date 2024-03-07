@@ -6,12 +6,14 @@ class chambre {
     private string $_client_name;
     private int $_price;
     private int $_nbr_bed;
+    private bool $_wifi;
     private hotel $_sleep_here; // objet
 
-    public function __construct(hotel $sleepHere,string $clientName, int $price, int $nbrBed) {
+    public function __construct(hotel $sleepHere, string $clientName, int $price, int $nbrBed, bool $wifi) {
         $this->_client_name = $clientName;
         $this->_price = $price;
         $this->_nbr_bed = $nbrBed;
+        $this->_wifi = $wifi;
         $this->_sleep_here = $sleepHere; //
         $this->_sleep_here; // -> call from function 
     }
@@ -30,7 +32,7 @@ class chambre {
     //========== GET & SET==========\\
 
     
-    //CLIENT
+    // CLIENT
     public function get_client_name() : String
     {
         return $this->_client_name;
@@ -58,7 +60,7 @@ class chambre {
     }
 
 
-    //BED
+    // BED
     public function get_nbr_bed()
     {
         return $this->_nbr_bed;
@@ -72,7 +74,7 @@ class chambre {
     }
 
 
-    //HOTEL
+    // HOTEL
     public function get_sleep_here()
     {
         return $this->_sleep_here;

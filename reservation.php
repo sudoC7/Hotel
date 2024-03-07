@@ -2,7 +2,7 @@
 
     
 class reservation {
-
+    
     private DateTime $_date_input;
     private DateTime $_date_output;
     private chambre $_bed; // object
@@ -32,7 +32,7 @@ class reservation {
     //========== GET & SET==========\\
 
 
-    //DATE INPUT
+    // DATE INPUT
     public function get_date_input()
     {
         return $this->_date_input;
@@ -46,7 +46,7 @@ class reservation {
     }
 
 
-    //DATE OUTPUT
+    // DATE OUTPUT
     public function get_date_output()
     {
         return $this->_date_output;
@@ -60,7 +60,7 @@ class reservation {
     }
 
 
-    //BED
+    // BED
     public function get_bed()
     {
         return $this->_bed;
@@ -74,7 +74,7 @@ class reservation {
     }
 
     
-    //CLIENT
+    // CLIENT
     public function get_client()
     {
         return $this->_client;

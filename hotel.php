@@ -27,14 +27,7 @@ class hotel {
     
     
 
-    
     //========== GET & SET==========\\
-
-
-
-
-
-
 
 
     // COMPANY NAME
