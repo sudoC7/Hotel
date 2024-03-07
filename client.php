@@ -29,7 +29,7 @@ class client {
     
 
     // FIRSTNAME
-    public function get_firstName()
+    public function get_firstName() : string
     {
         return $this->_firstName;
     }

@@ -13,7 +13,11 @@
             require $class_name . '.php';
         });
 
+
+        // ???
         
+        // $client = new client("Martin","Shaungauère");
+        // $client->get_firstName();
 
 
     ?>
