@@ -1,0 +1,167 @@
+{HOTEL}= (
+	nameHotel : *******
+	address : 10 route de la Gare 67000 Strasbourg
+	chambres(30) : array(1=>array(nbrlit: 2, prixChmbrJ: 120$, ), 2, ..., 30) 
+	
+	?????clients() : 'futur clients' ?????
+	
+)
+
+{CLIENT}= ( 
+	nom: ****
+	prenom: ****
+	tel: ** ** ** ** ** **
+	hotels(): 'les hotels reservés'
+
+)
+
+{RESERVATION-HOTEL}= (
+
+	hotels(): 'les hotels reservés'
+
+)
+
+{RESERVATION-CLIENT}= (
+
+	un client peut reserver plusieurs chambre 
+	un reservation 
+
+)
+
+
+
+
+
+
+
+
+
+Le client a une chambre avec un nombre défini alors il
+faut crée un tableau de chambre de 1 a 30*(nbrChambreHotel)    
+
+
+Hotel = un hotel a nom des chambres et des reservation des clients
+
+Client = un nom, prenom, tel, et peut reserver plusieurs chambre dans un hotel avec une
+date d'entrée et sortie
+
+Reservation = reservation de plusieurs chambre et chambre n'a qu'une seule reservation ? 
+
+
+Chambre = Chambre ne peut être reservé qu'un seule fois 
+
+
+
+
+
+
+///////////////////////////////CLASSES//////////////////////////////////////
+
+(HOTEL) = [
+	id_hotel
+	raisonSocial: ****
+	address: ****
+	chambres(n): array(1=>array(nbrlit: 2, prixJ: 120$,), 2, ..., 30)
+	reservation: 
+] 
+
+
+1 et n
+
+{a}
+
+1 et 1
+
+
+(CHAMBRE) = [
+	id_chambre
+	nameCustomer: ****
+	prix: 120$
+	nbrLit: 2
+	reservation(n): array(1=>) 
+] 
+
+
+1 et n ??????
+
+
+(RESERVATION) = [
+	id_reservation		
+	chambres(n): array(1=>array(nbrlit: 2, prixJ: 120$,), 2, ..., 30)
+	dateEntree:
+	dateSortie:
+] 
+
+
+1 et 1
+
+{a}
+
+1 et n
+
+
+(CLIENT) = [
+	id_client
+	name: ****
+	lastname: ****	
+	CHAMBRE(n): array(1=>array(nbrlit: 2, prixJ: 120$,), 2, ..., 30)
+	RESERVATION(n): array(*=>...)  
+] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
