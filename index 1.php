@@ -14,12 +14,13 @@
         });
 
 
-        // ???
+        // 
+        $client = new client("Aaron", "Jacob");
+        // echo $client->__toString();
+
+        // $r1 = new reservation(/*Hotel*/, /*Chambre*/, /*Date(entree:sortie)*/);
+
         
-        // $client = new client("Martin","Shaungauère");
-        // $client->get_firstName();
-
-
     ?>
 
 </body>

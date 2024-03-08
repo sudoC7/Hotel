@@ -27,7 +27,9 @@ class chambre {
     
     
     
-
+    public function __toString() {
+        // return 
+    }
     
     //========== GET & SET==========\\
 

@@ -7,6 +7,7 @@ class reservation {
     private DateTime $_date_output;
     private chambre $_bed; // object
     private client $_client; // object
+    private int $_totalPrice; // Pour calculer le prix total des reservations 
 
     public function __construct(client $client, chambre $bed, string $dateInput, string $dateOutput) {
 
@@ -21,10 +22,11 @@ class reservation {
     //========== FUNCTIONS ==========\\
 
 
+    // je veux une chambre avec Wifi du 10/03/2024 au 17/03/2024 
 
 
-
-
+    //Pour le total du prix 
+    // 10/03/2024 au 17/03/2024 = 7j * 120€ 
 
 
 

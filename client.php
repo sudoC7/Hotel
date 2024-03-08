@@ -5,11 +5,13 @@ class client {
 
     private string $_firstName;
     private string $_lastName;
+    private array $_reservation;
 
     public function __construct($firstName, $lastName) {
         
-        $this->$_firstName = $firstName;
-        $this->$_lastName = $lastName;
+        $this->_firstName = $firstName;
+        $this->_lastName = $lastName;
+        $this->_reservation = [];
 
     }
 
@@ -22,8 +24,10 @@ class client {
 
 
 
-
-
+    //Affiche nom et prenom 
+    public function __toString() {
+        return $this->_firstName." ".$this->_lastName;   
+    }
 
     //========== GET & SET==========\\
     
