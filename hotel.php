@@ -9,36 +9,24 @@ class hotel {
     private string $_city;
     private array $_bed;
 
-    public function __construct(string $companyName, string $address, string $postalCode, string $city) {
+    public function __construct(string $companyName, string $address, string $postalCode, string $city, ) {
         $this->_companyName = $companyName;
         $this->_address = $address;
         $this->_postalCode = $postalCode;
         $this->_city = $city;
-        $this->_bed = [30];
+        $this->_bed = [];
     }
 
 
     //========== FUNCTIONS ==========\\
     
-    // faire une boucle avec condition qui controle la disponibilité des chambres
-    // si par exemple je veux reserver la chambre 3 si elle est occupé j'envoie un echo de "chambre occupé" si non je la reserve 
-    //
-    public function controleBed() {
-        for($i = 0; $i < count($this->_bed); $i++) {
-            $totalBed +=$i;
-            if($i == $this->_bed[$i] && $this->_bed[$i]['']) {
-                
-            }
-        }
+  
+    
+
+    //fonction qui ajoutera une chambre reservé 
+    public function addBed(chambre $bedReserve) {
+            $this->_bed[] = $bedReserve;
     }
-
-
-
-    // Faire une fonction qui compte le nombre de chambre Libre ???
-    public function everyRoom() {
-
-    }
-
 
 
     //Affiche Nom et la Ville 

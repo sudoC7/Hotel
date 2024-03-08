@@ -6,16 +6,17 @@ class chambre {
     private string $_client_name;
     private int $_price;
     private int $_nbr_bed;
+    private int $_nbr_room;
     private bool $_wifi;
     private hotel $_sleep_here; // objet HOTEL
 
-    public function __construct(hotel $sleepHere, string $clientName, int $price, int $nbrBed, bool $wifi) {
-        $this->_client_name = $clientName;
-        $this->_price = $price;
+    public function __construct(hotel $sleepHere, string $clientName, int $nbrBed, bool $wifi) {
+        $this->_client_name = $clientName; // ici on a le nom du client qu'on pourras passser a l'hotel 
+        $this->_price = 120; // price to the night
         $this->_nbr_bed = $nbrBed;
         $this->_wifi = $wifi;
         $this->_sleep_here = $sleepHere; // object HOTEL
-        $this->_sleep_here; // -> call from function  // object HOTEL
+        $this->_sleep_here->addBed($this); // -> call from function  // object HOTEL
     }
     
 

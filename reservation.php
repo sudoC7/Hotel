@@ -5,30 +5,30 @@ class reservation {
     
     private DateTime $_date_input;
     private DateTime $_date_output;
+    private $_interval; // interval des deux dates;
     private chambre $_bed; // object
     private client $_client; // object
     private int $_totalPrice; // Pour calculer le prix total des reservations 
 
     public function __construct(client $client, chambre $bed, string $dateInput, string $dateOutput) {
 
-        $this->$_date_input = new DateTime($dateInput);
-        $this->$_date_output = new DateTime($dateOutput);
+        $this->_date_input = new DateTime($dateInput);
+        $this->_date_output = new DateTime($dateOutput);
+        $this->_interval = $this->_date_input->diff($this->_date_output);
         $this->_bed = $bed; // object CHAMBRE
         $this->_bed; // object CHAMBRE
         $this->_client = $client; // object CLIENT
-        $this->$client; // object CLIENT
+        // $this->$client; // object CLIENT
     }
 
     //========== FUNCTIONS ==========\\
 
 
-    // je veux une chambre avec Wifi du 10/03/2024 au 17/03/2024 
 
 
-    //Pour le total du prix 
-    // 10/03/2024 au 17/03/2024 = 7j * 120€ 
-
-
+    public function interval() {
+        return $this->_interval->days;
+    }
 
 
     //========== GET & SET==========\\
@@ -46,17 +46,31 @@ class reservation {
 
         return $this;
     }
-
-
+    
+    
     // DATE OUTPUT
     public function get_date_output()
     {
         return $this->_date_output;
     }
-
+    
     public function set_date_output($_date_output)
     {
         $this->_date_output = $_date_output;
+        
+        return $this;
+    }
+    
+    
+    //INTERVAL DAYS output input
+    public function get_interval()
+    {
+        return $this->_interval;
+    }
+
+    public function set_interval($_interval)
+    {
+        $this->_interval = $_interval;
 
         return $this;
     }
@@ -88,6 +102,7 @@ class reservation {
 
         return $this;
     }
+
 
 }
 
