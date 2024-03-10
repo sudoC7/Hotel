@@ -24,12 +24,23 @@ class reservation {
     //========== FUNCTIONS ==========\\
 
 
+    //fonction affichant date d'entrée et de sortie 
+    public function outInt() {
+        echo " du " .$this->_date_input. " au " .$this->_date_output;
+    }
 
-
+    //fonction qui retourne le nombre de jours que le client passera dans l'hotel 
     public function interval() {
         return $this->_interval->days;
     }
 
+    //fonction qui calculera le prix total de la reservation 
+    public function totalPriceReserv() {
+        
+    }
+
+
+    //Faire une fonction de control de date pour la reservation si la reservation d'une chambre 3 est dans l'interval d'une nouvel reservation alors la reservation n'est plus possible  
 
     //========== GET & SET==========\\
 

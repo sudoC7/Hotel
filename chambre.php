@@ -9,6 +9,7 @@ class chambre {
     private int $_nbr_room;
     private bool $_wifi;
     private hotel $_sleep_here; // objet HOTEL
+    private array $_reservation; // tableau de reservation de chambre 
 
     public function __construct(hotel $sleepHere, string $clientName, int $nbrBed, bool $wifi) {
         $this->_client_name = $clientName; // ici on a le nom du client qu'on pourras passser a l'hotel 
@@ -17,6 +18,7 @@ class chambre {
         $this->_wifi = $wifi;
         $this->_sleep_here = $sleepHere; // object HOTEL
         $this->_sleep_here->addBed($this); // -> call from function  // object HOTEL
+        $this->_reservation = []; // tableau de reservation vidé 
     }
     
 
@@ -26,7 +28,9 @@ class chambre {
     
     
     
-    
+    public function bedReserve() {
+        echo $this->_client_name. " - Chambre " . $this->_nbr_room ." - du ";
+    }
     
     public function __toString() {
         // return 

@@ -21,13 +21,32 @@ class hotel {
     //========== FUNCTIONS ==========\\
     
   
+    //fonction reservation ???
+    public function reserFromHotel() {
+        // Affichage nombre de reservation 
+        // nomClient - Chambre ** - date du au du de reservation 
+    }
+
+    //fonction qui listera toutes les chambres de l'hotel "réservée et disponible"
     
+    public function bedRoomList() {
+        
+        //cree une condition si aucune chambre n'est reservé ou toutes les chambres sont disponible afficher le message " Aucune réservation ! "
+        // crée une boucle foreach qui va afficher toutes chambres 
+        //chambres - prix - wifi(oui/non) - etat(reservé/dispo)
+        
+    }
+
 
     //fonction qui ajoutera une chambre reservé 
     public function addBed(chambre $bedReserve) {
             $this->_bed[] = $bedReserve;
     }
 
+    //Affiche adresse complet 
+    public function addressComplet() {
+        echo $this->_address. " " .$this->_postalCode. " " .$this->_city;
+    }
 
     //Affiche Nom et la Ville 
     public function __toString() {
