@@ -14,23 +14,25 @@
         });
 
 
-        
-        $client = new client("Aaron", "Jacob");
-      
-        $hotel = new hotel('Hilton ****', '10 route de la Gare', '67000', 'Strasbourg');
+        //client 
+        $client = new Client("Aaron", "Jacob");
 
-        $hotel->addressComplet();
-        // public function __construct(hotel $sleepHere, string $clientName, int $nbrBed, bool $wifi
-        //je passe le nom du client via la reservation 
-        // $chambre = new chambre($hotel, $reservation->$this->_client->__toString(), 3, 0);
+        //HOTEL
+        //(string $companyName, string $address, string $postalCode, string $city)
+        $hotel = new Hotel("Hilton ****", "10 rue de la Pierre", "67000", "Strasbourg");
 
-        // // __construct(client $client, chambre $bed, string $dateInput, string $dateOutput) {
-        // $reservation = new reservation($client, $chambre, "2024-03-10", "2024-03-17");
+        //ROOM
+        //(Hotel $sleepHere, int $nbrRoom, int $nbrBed, int $price, bool $wifi)
+        $room = new Room($hotel, 2, 2, 190, 0);// l'Hotel, numero du chambre, nombre de lit, prix du reservation, oui = 1 non = 0 pour wifi 
 
-        // $reservation->interval();
+        //RESERVATION
+        //(Client $client, Room $bed, string $dateInput, string $dateOutput)
+        $reservation = new Reservation($client, $room, "2024-03-10", "2024-03-17");
 
-        // (string $companyName, string $address, string $postalCode, string $city)
-        
+        $client->afficherReservTitulaire();
+       
+
+              
     ?>
 
 </body>

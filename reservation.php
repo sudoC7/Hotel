@@ -1,46 +1,37 @@
 <?php
 
     
-class reservation {
+class Reservation {
     
     private DateTime $_date_input;
     private DateTime $_date_output;
     private $_interval; // interval des deux dates;
-    private chambre $_bed; // object
-    private client $_client; // object
+    private Room $_bed; // object
+    private Client $_client; // object
     private int $_totalPrice; // Pour calculer le prix total des reservations 
 
-    public function __construct(client $client, chambre $bed, string $dateInput, string $dateOutput) {
+    public function __construct(Client $client, Room $bed, string $dateInput, string $dateOutput) {
 
         $this->_date_input = new DateTime($dateInput);
         $this->_date_output = new DateTime($dateOutput);
         $this->_interval = $this->_date_input->diff($this->_date_output);
         $this->_bed = $bed; // object CHAMBRE
-        $this->_bed; // object CHAMBRE
+        $this->_bed->addReserv($this);
         $this->_client = $client; // object CLIENT
-        // $this->$client; // object CLIENT
+        $this->_client->addReserv($this); 
     }
 
     //========== FUNCTIONS ==========\\
 
-
-    //fonction affichant date d'entrée et de sortie 
-    public function outInt() {
-        echo " du " .$this->_date_input. " au " .$this->_date_output;
+    //Fonction affichant la reservation du client 
+    public function reservClient() {
+        echo $this->_bed->$this. " " .$this->_date_input. " au " .$this->_date_output;
     }
 
-    //fonction qui retourne le nombre de jours que le client passera dans l'hotel 
+    // Fonction qui retourne le nombre de jours que le client passera dans l'hotel 
     public function interval() {
         return $this->_interval->days;
     }
-
-    //fonction qui calculera le prix total de la reservation 
-    public function totalPriceReserv() {
-        
-    }
-
-
-    //Faire une fonction de control de date pour la reservation si la reservation d'une chambre 3 est dans l'interval d'une nouvel reservation alors la reservation n'est plus possible  
 
     //========== GET & SET==========\\
 

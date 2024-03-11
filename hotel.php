@@ -1,46 +1,94 @@
 <?php
 
 
-class hotel {
+class Hotel {
     
     private string $_companyName;
     private string $_address;
     private string $_postalCode;
     private string $_city;
-    private array $_bed;
+    private array $_rooms;
 
-    public function __construct(string $companyName, string $address, string $postalCode, string $city, ) {
+    public function __construct(string $companyName, string $address, string $postalCode, string $city) {
         $this->_companyName = $companyName;
         $this->_address = $address;
         $this->_postalCode = $postalCode;
         $this->_city = $city;
-        $this->_bed = [];
+        $this->_rooms = [];
     }
 
 
     //========== FUNCTIONS ==========\\
     
   
-    //fonction reservation ???
-    public function reserFromHotel() {
-        // Affichage nombre de reservation 
-        // nomClient - Chambre ** - date du au du de reservation 
+
+    // Fonction AFFICHE Toutes les chambres
+
+    public function displayRooms() {
+        $result = "<h2>Reservation de l'hotel $this->_companyName $this->_city</h2>";
+
+        foreach ($this->_rooms as $nbrReserv) {
+            $result .= "<br>". $nbrReserv->forHotel(). "</b>";
+        }
+
+        return $result;
     }
 
-    //fonction qui listera toutes les chambres de l'hotel "réservée et disponible"
-    
-    public function bedRoomList() {
-        
-        //cree une condition si aucune chambre n'est reservé ou toutes les chambres sont disponible afficher le message " Aucune réservation ! "
-        // crée une boucle foreach qui va afficher toutes chambres 
-        //chambres - prix - wifi(oui/non) - etat(reservé/dispo)
-        
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     //fonction qui ajoutera une chambre reservé 
-    public function addBed(chambre $bedReserve) {
-            $this->_bed[] = $bedReserve;
+    public function addBed(Room $bedReserve) {
+        $this->_rooms[] = $bedReserve;
     }
 
     //Affiche adresse complet 

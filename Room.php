@@ -1,20 +1,20 @@
 <?php
 
     
-class chambre {
+class Room {
 
-    private string $_client_name;
-    private int $_price;
-    private int $_nbr_bed;
+    private float $_price;
     private int $_nbr_room;
+    private int $_nbr_bed;
     private bool $_wifi;
-    private hotel $_sleep_here; // objet HOTEL
+    private Hotel $_sleep_here; // objet HOTEL
     private array $_reservation; // tableau de reservation de chambre 
 
-    public function __construct(hotel $sleepHere, string $clientName, int $nbrBed, bool $wifi) {
-        $this->_client_name = $clientName; // ici on a le nom du client qu'on pourras passser a l'hotel 
-        $this->_price = 120; // price to the night
+    public function __construct(Hotel $sleepHere, int $nbrRoom, int $nbrBed, int $price, bool $wifi) {
+    
+        $this->_price = $price; // price to the night
         $this->_nbr_bed = $nbrBed;
+        $this->_nbr_room = $nbrRoom;
         $this->_wifi = $wifi;
         $this->_sleep_here = $sleepHere; // object HOTEL
         $this->_sleep_here->addBed($this); // -> call from function  // object HOTEL
@@ -23,17 +23,17 @@ class chambre {
     
 
     //========== FUNCTIONS ==========\\
-    
-    
-    
-    
-    
-    public function bedReserve() {
-        echo $this->_client_name. " - Chambre " . $this->_nbr_room ." - du ";
+
+    public function addReserv(Reservation $reservBed) {
+        $this->_reservation[] = $reservBed;
+    }
+
+    public function forHotel() {
+        echo
     }
     
     public function __toString() {
-        // return 
+        echo $this->_sleep_here->this ." / Chambre : ". $this->_nbr_room ."(". $this->_nbr_bed ." - ". $this->_price ." - Wifi : ". $this->_wifi ." - du ";
     }
     
     //========== GET & SET==========\\
