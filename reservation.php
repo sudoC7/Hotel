@@ -5,17 +5,17 @@ class Reservation {
     
     private DateTime $_date_input;
     private DateTime $_date_output;
-    private Room $_bed; 
+    private Room $_room; 
     private Client $_client; 
-    private int $_price;
+    
 
-    public function __construct(Client $client, Room $bed, string $dateInput, string $dateOutput) {
+    public function __construct(Client $client, Room $room, string $dateInput, string $dateOutput) {
 
         $this->_date_input = new DateTime($dateInput);
         $this->_date_output = new DateTime($dateOutput);
-        $this->_bed = $bed; // object CHAMBRE
-        $this->_bed->addReserv($this);
-        $this->_bed->get_hotel()->addReservHotel($this);// appel d'un autre objet 
+        $this->_room = $room; // object CHAMBRE
+        $this->_room->addReserv($this);
+        $this->_room->get_hotel()->addReservHotel($this);// appel d'un autre objet 
         $this->_client = $client; // object CLIENT
         $this->_client->addReserv($this); 
     }
@@ -25,25 +25,19 @@ class Reservation {
 
     // Fonction affichant la reservation du client 
     public function reservClient() {
-        return $this->_bed. " " .$this->_date_input->format("d-m-Y"). " au " .$this->_date_output->format("d-m-Y");
+        return $this->_room. " " .$this->_date_input->format("d-m-Y"). " au " .$this->_date_output->format("d-m-Y");
     }
 
     public function reservHotel() {
-        return $this->_client. " - Chambre " .$this->_bed->get_nbr_room(). " - du " .$this->_date_input->format("d-m-Y"). " au " .$this->_date_output->format("d-m-Y");
+        return $this->_client. " - Chambre " .$this->_room->get_nbr_room(). " - du " .$this->_date_input->format("d-m-Y"). " au " .$this->_date_output->format("d-m-Y");
     }
 
 
-     // Calcule le nombre de jour  
-
-    public function interval() {
-       $interval = $this->_date_input->diff($this->_date_output);
-       return $interval->days; // display two days 
-    }
-
+    // Fonction calculant le prix total d'une reservation
     public function totalPrice() {
-        return $totalprice = $this->_bed->get_price();
+        $interval = $this->_date_input->diff($this->_date_output);
+        return $this->_room->get_price() * $interval->days;
     }
-
 
     //========== GET & SET==========\\
 
@@ -61,7 +55,7 @@ class Reservation {
         return $this;
     }
     
-    
+
     // DATE OUTPUT
     public function get_date_output() : DateTime
     {
@@ -75,8 +69,8 @@ class Reservation {
         return $this;
     }
     
-    
-    //INTERVAL DAYS output input
+
+    // INTERVAL DAYS output input
     public function get_interval()
     {
         return $this->_interval;
@@ -91,14 +85,14 @@ class Reservation {
 
 
     // BED
-    public function get_bed()
+    public function get_room()
     {
-        return $this->_bed;
+        return $this->_room;
     }
 
-    public function set_bed($_bed)
+    public function set_room($_room)
     {
-        $this->_bed = $_bed;
+        $this->_room = $_room;
 
         return $this;
     }
@@ -117,18 +111,6 @@ class Reservation {
         return $this;
     }
 
-    // PRICE
-    public function get_price()
-    {
-        return $this->_price; 
-    }
-
-    public function set_price($_price)
-    {
-        $this->_price = $_price;
-
-        return $this;
-    }
 }
 
 

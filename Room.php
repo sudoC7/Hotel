@@ -24,7 +24,7 @@ class Room {
 
     //========== FUNCTIONS ==========\\
 
-
+    // Function qui va stocker les chambres  
     public function addReserv(Reservation $reservBed) {
         $this->_reservations[] = $reservBed;
     }
@@ -38,6 +38,7 @@ class Room {
             return $this->_hotel->__toString() ." / Chambre : ". $this->_nbr_room ." ( ". $this->_nbr_bed ." lits - ". $this->_price ."€ - Wifi : NON ) - du ";
         }
     }
+    
     
     //========== GET & SET==========\\
 
@@ -112,6 +113,18 @@ class Room {
     }
 
 
+    // WIFI
+    public function get_wifi()
+    {
+        return $this->_wifi;
+    }
+
+    public function set_wifi($_wifi)
+    {
+        $this->_wifi = $_wifi;
+
+        return $this;
+    }
 }
 
 ?>

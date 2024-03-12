@@ -19,7 +19,7 @@ class Client {
     //========== FUNCTIONS ==========\\
 
 
-    // public function addReserv( )
+    // Fonction qui increment chaque reservation du Client 
     public function addReserv(Reservation $theReserv ) {
         $this->_reservations[] = $theReserv;
     }
@@ -38,17 +38,21 @@ class Client {
         return $result;
     }
 
-    public function totalPrice() {
+
+    // Fonction affichant le prix total des reservation du client 
+    public function total() {
         $result = "Total : ";
-        
-        foreach ($this->_reservations as $a) {
-            $result .= $a->get_price() * $a->interval();
+        $totalPrice = 0;
+
+        foreach ($this->_reservations as $total) {
+            $totalPrice += $total->totalPrice();
         }
 
-        return $result;
+        return $result .=$totalPrice." €";
     }
 
-    //Affiche nom et prenom 
+
+    // Fonction affichan nom et prenom 
     public function __toString() {
         return $this->_firstName." ".$this->_lastName;   
     }
