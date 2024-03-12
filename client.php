@@ -27,6 +27,7 @@ class Client {
 
     // Fonction AFFICHE INFO RESERVATION DU CLIENT 
     public function afficherReservTitulaire() {
+        $totalPrice = 0;
         $result = "<h2>Réservation de $this->_firstName $this->_lastName</h2>
         <p style='width:140px;padding:3px;border-radius: 3px;background-color: #33D396;';>".count($this->_reservations) ." RÉSERVATION/S</p>";
 
@@ -37,12 +38,15 @@ class Client {
         return $result;
     }
 
-    //CALCUL interval days 
-    $date1 = new DateTime('2022-04-01');
-    $date2 = new DateTime('2022-04-10');
-    $interval = $date1->diff($date2);
-    echo $interval->days;
+    public function totalPrice() {
+        $result = "Total : ";
+        
+        foreach ($this->_reservations as $a) {
+            $result .= $a->get_price() * $a->interval();
+        }
 
+        return $result;
+    }
 
     //Affiche nom et prenom 
     public function __toString() {

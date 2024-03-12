@@ -29,13 +29,18 @@ class Hotel {
 
 
 
+
     public function countRoom() {
-       
-        $result = $this->_companyName." ".$this->_city."<br>".$this->_address. " " .$this->_postalCode. " " .$this->_city."<br>";
-
         
+        $totalRoom = 30;
+        $result = "<h2>".$this->_companyName. " " .$this->_city. "</h2><br>" .$this->_address. " " .$this->_postalCode. " " .$this->_city. "<br>";
 
-       return $result;
+        $result .= "Nombre de chambres : " .$totalRoom. 
+        "<br>Nombre de chambre réservées : " .count($this->_rooms). 
+        "<br>Nombre de chambre disponible : " .$totalRoom - count($this->_rooms);
+
+        return $result;
+
     }
 
 

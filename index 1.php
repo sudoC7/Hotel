@@ -43,6 +43,10 @@
         
     
         echo $client->afficherReservTitulaire();
+        echo $client->totalPrice();
+        
+        // echo $reservation->interval()."<br>";
+        // echo $reservation->totalPrice();
        
               
     ?>

@@ -12,7 +12,7 @@ class Room {
 
     public function __construct(Hotel $hotel, int $nbrRoom, int $nbrBed, int $price, bool $wifi) {
     
-        $this->_price = $price; // price to the night
+        $this->_price = $price; // prix pour J 
         $this->_nbr_bed = $nbrBed;
         $this->_nbr_room = $nbrRoom;
         $this->_wifi = $wifi;
