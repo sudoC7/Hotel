@@ -13,25 +13,37 @@
             require $class_name . '.php';
         });
 
+        //Client
+        $client = new Client('Aaron', 'Jacob');
+        $client1= new Client('Micka', 'Murmann');
+        //-----------------------
 
-        //client 
-        $client = new Client("Aaron", "Jacob");
+        //Hotel 
+        $hotel = new Hotel('Hilton ****', '10 rue de la Pierre', '67000', 'Strasbourg');
+        $hotel1 = new Hotel('Athena ***', '12 rue de  Label', '67100', 'Schiltigheim');
+        //-----------------------
 
-        //HOTEL
-        //(string $companyName, string $address, string $postalCode, string $city)
-        $hotel = new Hotel("Hilton ****", "10 rue de la Pierre", "67000", "Strasbourg");
-
-        //ROOM
-        //(Hotel $sleepHere, int $nbrRoom, int $nbrBed, int $price, bool $wifi)
-        $room = new Room($hotel, 2, 2, 190, 0);// l'Hotel, numero du chambre, nombre de lit, prix du reservation, oui = 1 non = 0 pour wifi 
-
-        //RESERVATION
-        //(Client $client, Room $bed, string $dateInput, string $dateOutput)
-        $reservation = new Reservation($client, $room, "2024-03-10", "2024-03-17");
-
-        $client->afficherReservTitulaire();
+        //Réservation de chambre 
+        $room = new Room($hotel, 2, 2, 120, 0); 
+        $reservation = new Reservation($client, $room, '10-03-2024', '17-03-2024');
+        
+        $room = new Room($hotel, 5, 2, 120, 0); 
+        $reservation = new Reservation($client, $room, '15-03-2024', '17-03-2024');
+        
+        $room = new Room($hotel, 7, 2, 120, 0); 
+        $reservation = new Reservation($client1, $room, '15-03-2024', '17-03-2024');
+        
+        $room = new Room($hotel, 9, 2, 120, 0); 
+        //-----------------------
+        
+        echo $hotel->countRoom();
+        
+        echo $hotel->displayRooms();
+        echo $hotel1->displayRooms();
+        
+    
+        echo $client->afficherReservTitulaire();
        
-
               
     ?>
 

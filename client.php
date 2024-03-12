@@ -5,64 +5,43 @@ class Client {
 
     private string $_firstName;
     private string $_lastName;
-    private array $_reservation;
-    private $_tion;
+    private array $_reservations;
 
     public function __construct($firstName, $lastName) {
         
         $this->_firstName = $firstName;
         $this->_lastName = $lastName;
-        $this->_reservation = [];
-
-
-        $this->_tion;
+        $this->_reservations = [];
 
     }
 
 
     //========== FUNCTIONS ==========\\
 
+
     // public function addReserv( )
     public function addReserv(Reservation $theReserv ) {
-        $this->_reservation[] = $theReserv;
+        $this->_reservations[] = $theReserv;
     }
-
-    //Fonction test
-    
-    //Crée une fonction qui affichera toutes les reservation du client 
-    public function listReserv() {
-        
-        //boucle foreache
-    }
-
-
-
 
 
     // Fonction AFFICHE INFO RESERVATION DU CLIENT 
-        
     public function afficherReservTitulaire() {
-        $result = "<h2><u>Reservation de</u></h2> $this->_firstName $this->_lastName<br>";
+        $result = "<h2>Réservation de $this->_firstName $this->_lastName</h2>
+        <p style='width:140px;padding:3px;border-radius: 3px;background-color: #33D396;';>".count($this->_reservations) ." RÉSERVATION/S</p>";
 
-        foreach ($this->_reservation as $reserv) {
+        foreach ($this->_reservations as $reserv) {
             $result .= "<b>".$reserv->reservClient()."</b><br>";
-        }
 
+        }
         return $result;
     }
-     
 
-
-
-
-
-
-
-
-
-
-
-
+    //CALCUL interval days 
+    $date1 = new DateTime('2022-04-01');
+    $date2 = new DateTime('2022-04-10');
+    $interval = $date1->diff($date2);
+    echo $interval->days;
 
 
     //Affiche nom et prenom 

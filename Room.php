@@ -7,33 +7,36 @@ class Room {
     private int $_nbr_room;
     private int $_nbr_bed;
     private bool $_wifi;
-    private Hotel $_sleep_here; // objet HOTEL
-    private array $_reservation; // tableau de reservation de chambre 
+    private Hotel $_hotel; // objet HOTEL
+    private array $_reservations; // tableau de reservation de chambre 
 
-    public function __construct(Hotel $sleepHere, int $nbrRoom, int $nbrBed, int $price, bool $wifi) {
+    public function __construct(Hotel $hotel, int $nbrRoom, int $nbrBed, int $price, bool $wifi) {
     
         $this->_price = $price; // price to the night
         $this->_nbr_bed = $nbrBed;
         $this->_nbr_room = $nbrRoom;
         $this->_wifi = $wifi;
-        $this->_sleep_here = $sleepHere; // object HOTEL
-        $this->_sleep_here->addBed($this); // -> call from function  // object HOTEL
-        $this->_reservation = []; // tableau de reservation vidé 
+        $this->_hotel = $hotel; // object HOTEL
+        $this->_hotel->addBed($this); // -> call from function  // object HOTEL
+        $this->_reservations = []; // tableau de reservation vidé 
     }
     
 
     //========== FUNCTIONS ==========\\
 
+
     public function addReserv(Reservation $reservBed) {
-        $this->_reservation[] = $reservBed;
+        $this->_reservations[] = $reservBed;
     }
 
-    public function forHotel() {
-        echo
-    }
     
+    // Fonction affiche les informations 
     public function __toString() {
-        echo $this->_sleep_here->this ." / Chambre : ". $this->_nbr_room ."(". $this->_nbr_bed ." - ". $this->_price ." - Wifi : ". $this->_wifi ." - du ";
+        if($this->_wifi) {
+            return $this->_hotel->__toString() ." / Chambre : ". $this->_nbr_room ." ( ". $this->_nbr_bed ." lits - ". $this->_price ."€ - Wifi : OUI ) - du ";
+        } else {
+            return $this->_hotel->__toString() ." / Chambre : ". $this->_nbr_room ." ( ". $this->_nbr_bed ." lits - ". $this->_price ."€ - Wifi : NON ) - du ";
+        }
     }
     
     //========== GET & SET==========\\
@@ -80,21 +83,35 @@ class Room {
         return $this;
     }
 
-
-    // HOTEL
-    public function get_sleep_here()
+    
+    //ROOM
+    public function get_nbr_room()
     {
-        return $this->_sleep_here;
+        return $this->_nbr_room;
     }
-
-    public function set_sleep_here($_sleep_here)
+   
+    public function set_nbr_room($_nbr_room)
     {
-        $this->_sleep_here = $_sleep_here;
+        $this->_nbr_room = $_nbr_room;
 
         return $this;
     }
 
-}
 
+    // HOTEL
+    public function get_hotel()
+    {
+        return $this->_hotel;
+    }
+
+    public function set_hotel($_hotel)
+    {
+        $this->_hotel = $_hotel;
+
+        return $this;
+    }
+
+
+}
 
 ?>

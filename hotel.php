@@ -8,6 +8,7 @@ class Hotel {
     private string $_postalCode;
     private string $_city;
     private array $_rooms;
+    private array $_reservationsHotel;
 
     public function __construct(string $companyName, string $address, string $postalCode, string $city) {
         $this->_companyName = $companyName;
@@ -15,92 +16,68 @@ class Hotel {
         $this->_postalCode = $postalCode;
         $this->_city = $city;
         $this->_rooms = [];
+        $this->_reservationsHotel = [];
     }
 
 
     //========== FUNCTIONS ==========\\
     
+    //fonction qui ajoutera une chambre reservé  ? ? ? ? ? ? 
+    public function addBed(Room $bedReserve) {
+        $this->_rooms[] = $bedReserve;
+    }
+
+
+
+    public function countRoom() {
+       
+        $result = $this->_companyName." ".$this->_city."<br>".$this->_address. " " .$this->_postalCode. " " .$this->_city."<br>";
+
+        
+
+       return $result;
+    }
+
+
+
+
+
+
+
+
+    //Réservation chambre
+    public function addReservHotel(Reservation $theReserv ) {
+        $this->_reservationsHotel[] = $theReserv;
+    } 
+
+
   
-
-    // Fonction AFFICHE Toutes les chambres
-
+    // Fonction AFFICHE toutes les chambres réservé
     public function displayRooms() {
-        $result = "<h2>Reservation de l'hotel $this->_companyName $this->_city</h2>";
 
-        foreach ($this->_rooms as $nbrReserv) {
-            $result .= "<br>". $nbrReserv->forHotel(). "</b>";
+        if($this->_reservationsHotel == null) {
+            return $not =  "<h2>Réservation de l'hotel $this->_companyName $this->_city</h2><p style='font-size:23px; margin-top:0;'>Aucune réservation !</p>";
+        }
+
+        $result = "<h2 style='margin:0;'>Réservation de l'hotel $this->_companyName $this->_city</h2> 
+        <p style='width:140px;padding:3px;border-radius: 3px;background-color: #33D396;';>".count($this->_reservationsHotel) ." RÉSERVATION/S</p>";
+        foreach ($this->_reservationsHotel as $nbrReserv) {
+            $result .= "<br><p style='font-size:19px; margin:0;'>". $nbrReserv->reservHotel(). "</p></br>";
         }
 
         return $result;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //fonction qui ajoutera une chambre reservé 
-    public function addBed(Room $bedReserve) {
-        $this->_rooms[] = $bedReserve;
-    }
-
     //Affiche adresse complet 
     public function addressComplet() {
-        echo $this->_address. " " .$this->_postalCode. " " .$this->_city;
+        return $this->_address. " " .$this->_postalCode. " " .$this->_city;
     }
 
     //Affiche Nom et la Ville 
     public function __toString() {
         return $this->_companyName." ".$this->_city;
     }
-    
+
     //========== GET & SET==========\\
 
 
