@@ -15,6 +15,7 @@ class Reservation {
         $this->_date_output = new DateTime($dateOutput);
         $this->_room = $room; // object CHAMBRE
         $this->_room->addReserv($this);
+        $this->_room->set_status(1); // j'ajoute l'etat de la chambre 
         $this->_room->get_hotel()->addReservHotel($this);// appel d'un autre objet 
         $this->_client = $client; // object CLIENT
         $this->_client->addReserv($this); 
@@ -22,22 +23,28 @@ class Reservation {
 
     //========== FUNCTIONS ==========\\
 
+    
 
     // Fonction affichant la reservation du client 
     public function reservClient() {
         return $this->_room. " " .$this->_date_input->format("d-m-Y"). " au " .$this->_date_output->format("d-m-Y");
     }
+    //------------------------------------------------------------------------
 
+    // Fonction affichant la reservation de l'Hotel
     public function reservHotel() {
         return $this->_client. " - Chambre " .$this->_room->get_nbr_room(). " - du " .$this->_date_input->format("d-m-Y"). " au " .$this->_date_output->format("d-m-Y");
     }
-
+    //------------------------------------------------------------------------
 
     // Fonction calculant le prix total d'une reservation
     public function totalPrice() {
         $interval = $this->_date_input->diff($this->_date_output);
         return $this->_room->get_price() * $interval->days;
     }
+    //------------------------------------------------------------------------
+
+
 
     //========== GET & SET==========\\
 

@@ -19,11 +19,11 @@ class Client {
     //========== FUNCTIONS ==========\\
 
 
-    // Fonction qui increment chaque reservation du Client 
+    // Fonction qui ajouter chaque reservation du client
     public function addReserv(Reservation $theReserv ) {
         $this->_reservations[] = $theReserv;
     }
-
+    //------------------------------------------------------------------------
 
     // Fonction AFFICHE INFO RESERVATION DU CLIENT 
     public function afficherReservTitulaire() {
@@ -37,7 +37,7 @@ class Client {
         }
         return $result;
     }
-
+    //------------------------------------------------------------------------
 
     // Fonction affichant le prix total des reservation du client 
     public function total() {
@@ -50,12 +50,14 @@ class Client {
 
         return $result .=$totalPrice." €";
     }
+    //------------------------------------------------------------------------
 
-
-    // Fonction affichan nom et prenom 
+    // Fonction affichant nom et prenom 
     public function __toString() {
         return $this->_firstName." ".$this->_lastName;   
     }
+    //------------------------------------------------------------------------
+
 
     //========== GET & SET==========\\
     

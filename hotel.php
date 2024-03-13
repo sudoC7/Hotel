@@ -33,24 +33,28 @@ class Hotel {
 
     //========== FUNCTIONS ==========\\
     
-    // Fonction qui ajoutera une chambre reservée 
+
+
+    // Fonction qui ajoutera une chambre réservée 
     public function addBed(Room $bedReserve) {
         $this->_rooms[] = $bedReserve;
     }
     //------------------------------------------------------------------------
     
     
-    // Réservation chambre
+    // Fonction qui ajoutera chaque réservation 
     public function addReservHotel(Reservation $theReserv ) {
         $this->_reservationsHotel[] = $theReserv;
     } 
     //------------------------------------------------------------------------
     
     
-    //Fonction qui affichera les statuts des chambres
+    //Fonction qui affichera les statuts des chambres (num chambre | prix | wifi | etat )
     public function statusRoom() {
         $wifi = "";
-        $etat = "DISPONIBLE";
+        $etat = "<p style=' background-color: red;
+        padding: 3px;
+        width: 120px;'>RESERVE<p>";
         $result = "<table style=' margin-top:20px; font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 45%;'>
@@ -64,11 +68,13 @@ class Hotel {
                                 if($status->get_wifi() == 1) {
                                     $wifi = "<i class='fa fa-wifi'></i>";
                                 }
-                                //???
-                                if($this->_reservationsHotel->$status->get_room()->get_nbr_room() == $status->get_nbr_room()) {
-                                    $etat = "<p style=''>RESERVE</p>";
+                                
+                                if($status->get_status() == 0) {
+                                    $etat = "<p style=' background-color: green;
+                                    padding: 3px;
+                                    width: 120px;'>DISPONIBLE</p>";
                                 }
-                                //???
+                                
                                 $result .= "<tr>
                                 <td> Chambre ".$status->get_nbr_room()."</td>
                                 <td>".$status->get_price()." €</td>
@@ -80,22 +86,25 @@ class Hotel {
                     
         return $result;
     }
-    
-    // Faut il faire une fonction de chambre reservé et disponible ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ?
-                
-                
+       
     //------------------------------------------------------------------------
-                
-                
+         
+    
     // Fonction qui affiche le nombre de chambre et leurs état de réservation
     public function countRoom() {
-                    
+        //
+        $reservBed = 0;
+        foreach ($this->_rooms as $status) {
+            if($status->get_status() == 1) {
+                $reservBed++;
+            }
+        }           
         $totalRoom = 30;
         $result = "<h2>".$this->_companyName. " " .$this->_city. "</h2><br>" .$this->_address. " " .$this->_postalCode. " " .$this->_city. "<br>";
 
         $result .= "Nombre de chambres : " .$totalRoom. 
-        "<br>Nombre de chambre réservées : " .count($this->_rooms). 
-        "<br>Nombre de chambre disponible : " .$totalRoom - count($this->_rooms);
+        "<br>Nombre de chambre réservées : " .$reservBed. 
+        "<br>Nombre de chambre disponible : " .$totalRoom - $reservBed;
         
         return $result;
 
@@ -194,16 +203,30 @@ class Hotel {
     }
     
     
-    // BED
-    public function get_bed()
+    // ROOMS
+    public function get_rooms()
     {
-        return $this->_bed;
+        return $this->_rooms;
     }
     
-    public function set_bed($_bed)
+    public function set_rooms($_rooms)
     {
-        $this->_bed = $_bed;
+        $this->_rooms = $_rooms;
         
+        return $this;
+    }
+
+   
+    // RESERVATION
+    public function get_reservationsHotel()
+    {
+        return $this->_reservationsHotel;
+    }
+
+    public function set_reservationsHotel($_reservationsHotel)
+    {
+        $this->_reservationsHotel = $_reservationsHotel;
+
         return $this;
     }
 }

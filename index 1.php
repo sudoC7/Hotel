@@ -34,6 +34,15 @@
         $reservation3 = new Reservation($client1, $room3, '15-03-2024', '17-03-2024');
         
         $room4 = new Room($hotel, 9, 2, 120, 0); 
+        $room5 = new Room($hotel, 10, 2, 120, 1); 
+        $room6 = new Room($hotel, 13, 2, 120, 1); 
+        $room7 = new Room($hotel, 18, 2, 120, 1); 
+        $room8 = new Room($hotel, 19, 2, 120, 0); 
+        $room9 = new Room($hotel, 21, 2, 120, 1); 
+        $room10 = new Room($hotel, 23, 2, 120, 0); 
+        $room11 = new Room($hotel, 27, 2, 120, 0); 
+        
+        
         //-----------------------
         
         echo $hotel->countRoom();
